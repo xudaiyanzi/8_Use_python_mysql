@@ -1,1 +1,1 @@
-# 8-Climate analysis: Python and mysql
+# 8-Climate analysis: Python and sqlite
