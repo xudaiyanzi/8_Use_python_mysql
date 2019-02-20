@@ -44,11 +44,30 @@ def welcome():
     """List all available api routes."""
     return (
         f"Available Routes:<br/>"
+        f"<br/>"
+        f"1. returns all the precipitation data: <br/>"
+        f"<br/>"
         f"/api/v1.0/precipitation<br/>"
+        f"<br/>"
+        f"<br/>"
+        f"2. returns all the station data: <br/>"
+        f"<br/>"
         f"/api/v1.0/stations<br/>"
+        f"<br/>"
+        f"<br/>"
+        f"3. returns a JSON list of Temperature Observations (tobs) for the previous year<br/>"
+        f"<br/>"
         f"/api/v1.0/tobs<br/>"
-        f"/api/v1.0/<start_date>(input a date:YYYY-MM-DD)<br/>"
-        f"/api/v1.0/<start>(input a date:YYYY-MM-DD)/<end>(input a date:YYYY-MM-DD)<br/>"
+        f"<br/>"
+        f"<br/>"
+        f"4. returns a JSON list of the minimum temperature, the average temperature, and the max temperature from a given start date<br/>"
+        f"<br/>"
+        f"/api/v1.0/<start_date>(input a start_date:YYYY-MM-DD)<br/>"
+        f"<br/>"
+        f"<br/>"
+        f"5. returns a JSON list of the minimum temperature, the average temperature, and the max temperature within a given start date and end date<br/>"
+        f"<br/>"
+        f"/api/v1.0/<start>(input a start_date:YYYY-MM-DD)/<end>(input a end_date:YYYY-MM-DD)<br/>"
     )
 
 
@@ -59,13 +78,13 @@ def precipitation():
     results = session.query(Measurement).all()
 
     # Create a dictionary from the row data and append to a list of all_passengers
-    precipitation_all = []
+    precipitation_all = [] 
     
     for result in results:
         
         precipitation_dict = {}      
         precipitation_dict["date"] = result.date
-        precipitation_dict["precipitation"] = result.prcp 
+        precipitation_dict["precipitation"] = result.prcp
         precipitation_all.append(precipitation_dict)
         
     return jsonify(precipitation_all)
